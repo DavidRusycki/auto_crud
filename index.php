@@ -1,3 +1,3 @@
 <?php
-require_once('./controller/controllerBase.php');
-
+require_once('./core/controller/controllerBase.php');
+init();
