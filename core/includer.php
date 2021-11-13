@@ -16,3 +16,11 @@ function includeConstantes() {
 function includeControllerLogin() {
     require_once('./core/controller/controllerLogin.php');
 }
+
+function includeControllerBd() {
+    require_once('./core/controller/controllerBd.php');
+}
+
+function includeControllerInclusao() {
+    require_once('./core/controller/controllerInclusao.php');
+}

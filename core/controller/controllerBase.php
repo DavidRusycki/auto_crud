@@ -40,6 +40,9 @@ function validaUsuarioLogado() {
  * Valida os parametros passados para definir o destino da requisição.
  */
 function validaParametros() {
+    if (isset($_GET[ACAO])) {
+        validaAcao($_GET[ACAO]);
+    }
     if (isset($_POST) && !empty($_POST) && count($_POST) && isset($_GET) && !empty($_GET) && count($_GET) && isset($_GET[ACAO])) {
         validaPost();
     }
@@ -62,7 +65,7 @@ function validaPost() {
         case ACAO_LOGIN:
             validaLogin();
             break;
-
+                
         default:
             die();
             break;
@@ -97,6 +100,25 @@ function validaGet() {
 }
 
 /**
+ * Valida se a ação é uma ação do sistema.
+ */
+function validaAcao($iAcao) {
+    if (in_array($iAcao, ACOES)) {
+        return true;
+    }
+    else {
+        redirectHome();
+    }
+}
+
+/**
+ * Retorna para o link da home.
+ */
+function redirectHome() {
+    header('Location: index.php');
+}
+
+/**
  * Inicia o processamento para consultar os dados da rotina.
  */
 function iniciaConsulta() {}
@@ -109,7 +131,11 @@ function montaInclusao() {}
 /**
  * Inicia o processamento para incluir os dados da rotina.
  */
-function processaInclusao() {}
+function processaInclusao() {
+    includeControllerInclusao();
+    processaInclusao();
+}
+
 /**
  * Inicia o processamento para excluir os dados da rotina.
  */
