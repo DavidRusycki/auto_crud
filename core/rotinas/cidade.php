@@ -21,8 +21,7 @@ function getColunasBd() {
     return [
           'codigo'
         , 'nome'
-        , 'preco'
-        , 'quantidade' 
+        , 'estado'
     ];
 }
 
@@ -34,8 +33,7 @@ function getNomeCampos() {
     return [
           'codigo' => 'Código'
         , 'nome' => 'Nome'
-        , 'preco' => 'Preço'
-        , 'quantidade' => 'Quantidade'
+        , 'estado' => 'Estado'
     ];
 }
 
@@ -46,7 +44,7 @@ function getColunasForInclusao() {
     return [
         'nome'
       , 'preco'
-      , 'quantidade' 
+      , 'estado' 
     ];
 }
 

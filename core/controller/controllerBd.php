@@ -39,3 +39,29 @@ function getConection() {
 
     return $oConn;
 }
+
+/**
+ * Retorna um array com os nomes da rotinas do sistema.
+ */
+function getArrayRotinasSistema() {
+    $aRotinas = [];
+    $aConsultaRotinas = execute(getSqlGetRotinas());
+    foreach ($aConsultaRotinas as $aRotina) {
+        $aRotinas[] = $aRotina['nome'];
+    }
+    return $aRotinas;
+}
+
+/**
+ * Retorna o sql para consultar as rotinas do sistema.
+ */
+function getSqlGetRotinas() {
+    return 'select * from tbrotina';
+}
+
+/**
+ * Retorna o sql de consulta para a rotina.
+ */
+function getSqlConsultaRotina() {
+    return "select * from tb{$_GET[ROTINA]}";
+}

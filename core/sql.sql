@@ -6,3 +6,10 @@ create table tbproduto (
 );
 
 alter table tbproduto add constraint pk_tbproduto primary key (codigo);
+
+create table tbrotina (
+	codigo serial not null,
+	nome varchar(200) not null
+);
+
+alter table tbrotina add constraint pk_tbrotina primary key (codigo);

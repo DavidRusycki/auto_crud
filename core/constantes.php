@@ -33,4 +33,5 @@ const BD_NAME = 'dinamic';
 const HOST    = 'localhost';
 const BD      = 'pgsql';
 const SENHA   = 'postgres';
-const USER    = 'root';
+const USER    = 'postgres';
+const PORTA   = '5436';

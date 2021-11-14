@@ -6,6 +6,7 @@ require_once('./core/includer.php');
  */
 function init() {
     iniciaSecao();
+    includeConstantes();
     if (validaUsuarioLogado()) {
         validaParametros();
     }
@@ -28,7 +29,7 @@ function iniciaSecao() {
  * Valida se o usuário está logado.
  */
 function validaUsuarioLogado() {
-    includeConstantes();
+    return true;
     $bRetorno = false;
     if (isset($_SESSION) && $_SESSION[USUARIO] && $_SESSION[LOGADO]) {
         $bRetorno = true;
@@ -40,14 +41,29 @@ function validaUsuarioLogado() {
  * Valida os parametros passados para definir o destino da requisição.
  */
 function validaParametros() {
+    trataAcao();
+    
+    if (isset($_POST) && !empty($_POST) && count($_POST) && isset($_GET) && !empty($_GET) && count($_GET) && isset($_GET[ACAO]) && isset($_GET[ROTINA])) {
+        validaPost();
+    }
+    else if (isset($_GET) && !empty($_GET) && count($_GET) && isset($_GET[ACAO]) && isset($_GET[ROTINA])) {
+        validaGet();
+    }
+    else {
+        includeControllerMenu();
+        exibeMenuRotinas();
+    }
+}
+
+/**
+ * Realiza tratativas na ação.
+ */
+function trataAcao() {
     if (isset($_GET[ACAO])) {
         validaAcao($_GET[ACAO]);
     }
-    if (isset($_POST) && !empty($_POST) && count($_POST) && isset($_GET) && !empty($_GET) && count($_GET) && isset($_GET[ACAO])) {
-        validaPost();
-    }
-    else if (isset($_GET) && !empty($_GET) && count($_GET) && isset($_GET[ACAO])) {
-        validaGet();
+    else {
+        $_GET[ACAO] = ACAO_CONSULTAR;
     }
 }
 
@@ -121,7 +137,10 @@ function redirectHome() {
 /**
  * Inicia o processamento para consultar os dados da rotina.
  */
-function iniciaConsulta() {}
+function iniciaConsulta() {
+    includeControllerConsulta();
+    iniciaProcessoConsulta();
+}
 
 /**
  * Realiza a montagem da tela de inclusão.
