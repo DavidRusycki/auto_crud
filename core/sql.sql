@@ -13,3 +13,13 @@ create table tbrotina (
 );
 
 alter table tbrotina add constraint pk_tbrotina primary key (codigo);
+
+create table tbpessoa (
+	codigo serial not null,
+	nome varchar(200) not null,
+	idade decimal(100,2) not null
+);
+
+alter table tbpessoa add constraint pk_tbpessoa primary key (codigo);
+
+insert into tbpessoa (nome, idade) values ('David', 19);

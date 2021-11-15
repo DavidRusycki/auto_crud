@@ -14,13 +14,28 @@ function execute($sSql) {
     try {
         $oPrepare = getConection()->prepare($sSql);
         $oPrepare->execute();
-        return $oPrepare->fetchAll(PDO::FETCH_ASSOC);
+        $aRes = $oPrepare->fetchAll(PDO::FETCH_ASSOC);
+        $aRes = trataRes($aRes);
+        return $aRes;
     } catch (\Throwable $e) {
         echo '<pre>';
         echo $e;
         echo '</pre>';
         die();
     }
+}
+
+/**
+ * Trata o retorno;
+ * @param Array $aRes
+ * @return Mixed
+ */
+function trataRes($aRes) {
+    $xRetorno = true;
+    if (count($aRes)) {
+        $xRetorno = $aRes;
+    }
+    return $xRetorno;
 }
 
 /**

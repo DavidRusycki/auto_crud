@@ -11,6 +11,7 @@ function init() {
         validaParametros();
     }
     else {
+        validaLogin();
         includeControllerLogin();
         montaLogin();
     }
@@ -31,7 +32,7 @@ function iniciaSecao() {
 function validaUsuarioLogado() {
     return true;
     $bRetorno = false;
-    if (isset($_SESSION) && $_SESSION[USUARIO] && $_SESSION[LOGADO]) {
+    if (isset($_SESSION) && isset($_SESSION[USUARIO]) && $_SESSION[USUARIO] && $_SESSION[LOGADO]) {
         $bRetorno = true;
     }
     return $bRetorno;
@@ -49,7 +50,9 @@ function validaParametros() {
     else if (isset($_GET) && !empty($_GET) && count($_GET) && isset($_GET[ACAO]) && isset($_GET[ROTINA])) {
         validaGet();
     }
-    else {
+    else if (isset($_GET) && !empty($_GET) && count($_GET) && isset($_GET[ACAO]) && $_GET[ACAO] == ACAO_LOGOUT) {
+        logout();
+    } else {
         includeControllerMenu();
         exibeMenuRotinas();
     }
@@ -173,7 +176,11 @@ function montaAlteracao() {}
  * Inicia o processamento de validação de login no sistema.
  */
 function validaLogin() {}
+
 /**
  * Efetua o Logout do sistema.
  */
-function logout() {}
+function logout() {
+    unset($_SESSION[USUARIO]);
+    $_SESSION[LOGADO] = false;
+}

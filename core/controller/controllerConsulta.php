@@ -45,14 +45,14 @@ function montaConsulta() {
     $aRegistros = execute(getSqlConsultaRotina());
     if (is_array($aRegistros)) {
         adicionaColunas($aRegistros);
-        echo '<table class="table">';
+        echo '<table class="table table-striped">';
         montaColunas($aRegistros);
         montaLinhas($aRegistros);
         echo '</table>';        
     }
     else {
         echo '<br>';
-        echo 'Nenhum produto cadastrado.';
+        echo 'Nenhum registro encontrado.';
     }
 }
 
@@ -76,6 +76,7 @@ function montaColunas($aRegistros) {
         foreach($aRegistro as $iIndice => $sColuna) {
             trataTituloColuna($iIndice);    
         }
+        break;
     }
     echo '</tr>';
     echo '</thead>';

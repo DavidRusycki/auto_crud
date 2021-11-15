@@ -2,4 +2,6 @@
 /**
  * Responsável por montar a tela de login.
  */
-function montaLogin() {}
+function montaLogin() {
+    includeViewLogin();
+}

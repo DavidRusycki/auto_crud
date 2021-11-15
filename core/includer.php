@@ -41,6 +41,18 @@ function includeViewMenu() {
     require_once('./core/view/viewMenu.php');
 }
 
+function includeViewHeader() {
+    require_once('./core/view/viewHeader.php');
+}
+
+function includeViewFooter() {
+    require_once('./core/view/viewFooter.php');
+}
+
+function includeViewLogin() {
+    require_once('./core/view/viewLogin.php');
+}
+
 /**
  * Tenta dar require no arquivo da rotina.
  */
