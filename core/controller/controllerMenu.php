@@ -31,10 +31,3 @@ function montaConsulta() {
         </div>";
     }
 }
-
-/**
- * Retorna o nome da tela de Menus
- */
-function getNomeRotina() {
-    return 'Home';
-}

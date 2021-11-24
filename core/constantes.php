@@ -35,3 +35,9 @@ const BD      = 'pgsql';
 const SENHA   = 'postgres';
 const USER    = 'postgres';
 const PORTA   = '5436';
+
+//Tipos dos campos da tela.
+const NUMERICO = 'numerico';
+const TEXT = 'text';
+const DECIMAL = 'decimal';
+const DATE = 'date';

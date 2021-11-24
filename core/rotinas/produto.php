@@ -56,3 +56,25 @@ function getColunasForInclusao() {
 function getColunasForAlteracao() {
     return getColunasForInclusao();
 }
+
+/**
+ * Retorna o nome da cada campo quando necessário para alguma visualização.
+ * @return Array - Nomes das colunas
+ */
+function getNomeCampo($sCampo) {
+    $aNomes = getNomeCampos();
+    return $aNomes[$sCampo];
+}
+
+/**
+ * Retorna o tipo do campo para a tela.
+ */
+function getTipoCampo($sCampo) {
+    $aTipos = [
+        'codigo' => NUMERICO,
+        'nome' => TEXT,
+        'preco' => DECIMAL,
+        'quantidade' => NUMERICO
+    ];
+    return $aTipos[$sCampo];
+}

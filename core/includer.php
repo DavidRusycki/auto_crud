@@ -53,6 +53,10 @@ function includeViewLogin() {
     require_once('./core/view/viewLogin.php');
 }
 
+function includeViewInclusao() {
+    require_once('./core/view/viewInclusao.php');
+}
+
 /**
  * Tenta dar require no arquivo da rotina.
  */

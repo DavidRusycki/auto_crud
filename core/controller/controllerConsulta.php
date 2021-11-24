@@ -13,6 +13,7 @@ function iniciaProcessoConsulta() {
  */
 function requireViewRotina() {
     includeConstantes();
+    includeControllerBase();
     if (getExisteArquivoConsultaRotina()) {
         require_once(getNomeViewRotina());
     }
@@ -136,10 +137,3 @@ function trataLinha($sColuna, $xValor, $aLinha) {
     }
 }
 
-/**
- * Retorna o nome da rotina.
- */
-function getNomeRotina() {
-    includeConstantes();
-    return $_GET[ROTINA];
-}

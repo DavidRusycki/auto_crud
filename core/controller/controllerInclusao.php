@@ -53,3 +53,41 @@ function getValoresFromRelacionamentos() {
 
     return implode(',', $aValores);
 }
+
+/**
+ * Monta a tela de inclusão.
+ */
+function montaTelaInclusao() {
+    includeViewInclusao();
+}
+
+/**
+ * Monta os campos para inclusão dos registros.
+ */
+function montaCamposInclusao() {
+    includeArquivoRotina();
+    $aCampos = getColunasForInclusao();
+    foreach($aCampos as $sColunaBd) {
+        $sNomeCampo = getNomeCampo($sColunaBd);
+        // echo '</br>';
+        switch (getTipoCampo($sColunaBd)) {
+            case NUMERICO:
+                echo "<label for=\"$sColunaBd\">{$sNomeCampo}</label>";
+                echo "<input class=\"form-control\" type=\"number\" name=\"$sColunaBd\" id=\"$sColunaBd\">";
+                break;
+            case TEXT:
+                echo "<label for=\"$sColunaBd\">{$sNomeCampo}</label>";
+                echo "<input class=\"form-control\" type=\"text\" name=\"$sColunaBd\" id=\"$sColunaBd\">";
+                break;
+            case DECIMAL:
+                echo "<label for=\"$sColunaBd\">{$sNomeCampo}</label>";
+                echo "<input class=\"form-control\" type=\"text\" name=\"$sColunaBd\" id=\"$sColunaBd\">";
+                break;
+            case DATE:
+                echo "<label for=\"$sColunaBd\">{$sNomeCampo}</label>";
+                echo "<input class=\"form-control\" type=\"date\" name=\"$sColunaBd\" id=\"$sColunaBd\">";
+                break;
+        }
+    }
+
+}

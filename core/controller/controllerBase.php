@@ -76,7 +76,7 @@ function trataAcao() {
 function validaPost() {
     switch ($_GET[ACAO]) {
         case ACAO_INCLUIR:
-            processaInclusao();
+            iniciaInclusao();
             break;
         case ACAO_ALTERAR:
             processaAlteracao();
@@ -148,12 +148,15 @@ function iniciaConsulta() {
 /**
  * Realiza a montagem da tela de inclusão.
  */
-function montaInclusao() {}
+function montaInclusao() {
+    includeControllerInclusao();
+    montaTelaInclusao();
+}
 
 /**
  * Inicia o processamento para incluir os dados da rotina.
  */
-function processaInclusao() {
+function iniciaInclusao() {
     includeControllerInclusao();
     processaInclusao();
 }
@@ -183,4 +186,12 @@ function validaLogin() {}
 function logout() {
     unset($_SESSION[USUARIO]);
     $_SESSION[LOGADO] = false;
+}
+
+/**
+ * Retorna o nome da rotina.
+ */
+function getNomeRotina() {
+    includeConstantes();
+    return $_GET[ROTINA];
 }
