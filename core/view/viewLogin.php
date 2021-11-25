@@ -79,21 +79,23 @@ body {
   <body class="text-center">
     
 <main class="form-signin">
+
   <form action="?acao=<?= ACAO_LOGIN ?>" method="POST">
     <h1 class="h3 mb-3 fw-normal">Login</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="usuario">
       <label for="floatingInput">Usuário</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="senha">
       <label for="floatingPassword">Senha</label>
     </div>
 
     <button class="w-100 btn btn-lg btn-success" type="submit">Entrar</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
   </form>
+
 </main>
 
 

@@ -16,7 +16,7 @@
     <div class="container">
     
     <a class="btn btn-success" href="index.php?rotina=<?= getNomeRotina() ?>&acao=<?= ACAO_INCLUIR ?>&codigo=0">Incluir</a>
-    <a class="btn btn-warning right" href="index.php?rotina=<?= getNomeRotina() ?>&acao=5&codigo=0">Logout</a>
+    <a class="btn btn-warning pull-right" href="index.php">Voltar</a>
     
 
         <?php montaConsulta() ?>

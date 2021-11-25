@@ -79,7 +79,7 @@ function validaPost() {
             iniciaInclusao();
             break;
         case ACAO_ALTERAR:
-            processaAlteracao();
+            iniciaAlteracao();
             break;
         case ACAO_LOGIN:
             validaLogin();
@@ -173,17 +173,35 @@ function processaExclusao() {
 /**
  * Inicia o processamento para alterar os dados da rotina.
  */
-function processaAlteracao() {}
+function iniciaAlteracao() {
+    includeControllerAlteracao();
+    processaAlteracao();
+    redirectForRotina();
+}
 
 /**
  * Realiza a montagem da tela de alteração.
  */
-function montaAlteracao() {}
+function montaAlteracao() {
+    includeArquivoRotina();
+    $xChave = getFirstFromArray(getColunasChave());
+    if (isset($_GET[$xChave]) && $_GET[$xChave]) {
+        includeControllerAlteracao();
+        montaTelaAlteracao();
+    }
+    else {
+        redirectHome();
+    }
+}
 
 /**
  * Inicia o processamento de validação de login no sistema.
  */
-function validaLogin() {}
+function validaLogin() {
+
+    
+
+}
 
 /**
  * Efetua o Logout do sistema.
@@ -206,4 +224,14 @@ function getNomeRotina() {
  */
 function redirectForRotina() {
     header("Location: index.php?rotina=".$_GET[ROTINA]."");
+}
+
+/**
+ * Retorna a primeira posição de um array.
+ * @param Array $a
+ */
+function getFirstFromArray($a) {
+    foreach($a as $x) {
+        return $x;
+    }
 }

@@ -13,8 +13,8 @@ Repositório para CRUD PHP dinâmico.
 Item faltantes
 
 - Paginação
-- Alterar 
-- Deletar 
+- Alterar [x]
+- Deletar [x]
 - Login
 - Validações de parametros
 - Cadastro de rotinas inserir uma tabela no banco

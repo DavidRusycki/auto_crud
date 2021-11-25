@@ -37,6 +37,10 @@ function includeControllerExclusao() {
     require_once('./core/controller/controllerExclusao.php');
 }
 
+function includeControllerAlteracao() {
+    require_once('./core/controller/controllerAlteracao.php');
+}
+
 function includeViewConsulta() {
     require_once('./core/view/viewConsulta.php');
 }
@@ -59,6 +63,10 @@ function includeViewLogin() {
 
 function includeViewInclusao() {
     require_once('./core/view/viewInclusao.php');
+}
+
+function includeViewAlteracao() {
+    require_once('./core/view/viewAlteracao.php');
 }
 
 /**

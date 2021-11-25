@@ -80,3 +80,18 @@ function getSqlGetRotinas() {
 function getSqlConsultaRotina() {
     return "select * from tb{$_GET[ROTINA]}";
 }
+
+/**
+ * Retorna os dados de um linha do banco de dados da rotina.
+ */
+function getLinhaFromRotinaChave($sChave) {
+    return execute(getSqlLinhaFromRotinaChave($sChave, $_GET[$sChave]));
+}
+
+/**
+ * Retorna o sql para consultar uma linha do banco de acordo com a chave.
+ */
+function getSqlLinhaFromRotinaChave($sChave, $xValor) {
+    $sTable = 'tb'.$_GET[ROTINA];
+    return "select * from {$sTable} where {$sChave} = {$xValor} limit 1";
+}

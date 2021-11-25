@@ -81,19 +81,19 @@ function montaCamposInclusao() {
         switch (getTipoCampo($sColunaBd)) {
             case NUMERICO:
                 echo "<label for=\"$sColunaBd\">{$sNomeCampo}</label>";
-                echo "<input class=\"form-control\" type=\"number\" name=\"$sColunaBd\" id=\"$sColunaBd\">";
+                echo "<input class=\"form-control\" type=\"number\" name=\"$sColunaBd\" id=\"$sColunaBd\" required>";
                 break;
             case TEXT:
                 echo "<label for=\"$sColunaBd\">{$sNomeCampo}</label>";
-                echo "<input class=\"form-control\" type=\"text\" name=\"$sColunaBd\" id=\"$sColunaBd\">";
+                echo "<input class=\"form-control\" type=\"text\" name=\"$sColunaBd\" id=\"$sColunaBd\" required>";
                 break;
             case DECIMAL:
                 echo "<label for=\"$sColunaBd\">{$sNomeCampo}</label>";
-                echo "<input class=\"form-control\" type=\"text\" name=\"$sColunaBd\" id=\"$sColunaBd\">";
+                echo "<input class=\"form-control\" type=\"text\" name=\"$sColunaBd\" id=\"$sColunaBd\" required>";
                 break;
             case DATE:
                 echo "<label for=\"$sColunaBd\">{$sNomeCampo}</label>";
-                echo "<input class=\"form-control\" type=\"date\" name=\"$sColunaBd\" id=\"$sColunaBd\">";
+                echo "<input class=\"form-control\" type=\"date\" name=\"$sColunaBd\" id=\"$sColunaBd\" required>";
                 break;
         }
     }
