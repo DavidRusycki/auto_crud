@@ -33,6 +33,10 @@ function includeControllerMenu() {
     require_once('./core/controller/controllerMenu.php');
 }
 
+function includeControllerExclusao() {
+    require_once('./core/controller/controllerExclusao.php');
+}
+
 function includeViewConsulta() {
     require_once('./core/view/viewConsulta.php');
 }

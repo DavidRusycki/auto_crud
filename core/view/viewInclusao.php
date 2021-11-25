@@ -16,7 +16,7 @@
     <div class="container">
         <h1>Incluir <?= ucfirst(getNomeRotina()) ?></h1>
         
-        <form action="?rotina=<?= getNomeRotina() ?>&acao=<?= ACAO_INCLUIR ?>">
+        <form action="?rotina=<?= getNomeRotina() ?>&acao=<?= ACAO_INCLUIR ?>" method="POST" >
             
             <?php montaCamposInclusao() ?>
             

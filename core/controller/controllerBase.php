@@ -159,12 +159,17 @@ function montaInclusao() {
 function iniciaInclusao() {
     includeControllerInclusao();
     processaInclusao();
+    redirectForRotina();
 }
 
 /**
  * Inicia o processamento para excluir os dados da rotina.
  */
-function processaExclusao() {}
+function processaExclusao() {
+    includeControllerExclusao();
+    processaExclusaoRegistro();
+    redirectForRotina();
+}
 /**
  * Inicia o processamento para alterar os dados da rotina.
  */
@@ -194,4 +199,11 @@ function logout() {
 function getNomeRotina() {
     includeConstantes();
     return $_GET[ROTINA];
+}
+
+/**
+ * Rediciona para a consulta da rotina.
+ */
+function redirectForRotina() {
+    header("Location: index.php?rotina=".$_GET[ROTINA]."");
 }

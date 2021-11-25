@@ -9,3 +9,12 @@ Repositório para CRUD PHP dinâmico.
   - Alterar
   - Deletar   
 - Deve gerar um botão no menu do sistema para acessar a rotina.
+
+Item faltantes
+
+- Paginação
+- Alterar 
+- Deletar 
+- Login
+- Validações de parametros
+- Cadastro de rotinas inserir uma tabela no banco

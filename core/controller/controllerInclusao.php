@@ -48,7 +48,15 @@ function getSqlForInclusao($sTable) {
 function getValoresFromRelacionamentos() {
     $aValores = [];
     foreach(getColunasForInclusao() as $sColuna) {
-        $aValores[] = $_POST[$sColuna];
+        switch (getTipoCampo($sColuna)) {
+            case TEXT:
+                $aValores[] = "'".$_POST[$sColuna]."'";
+                break;
+            
+            default:
+                $aValores[] = $_POST[$sColuna];
+                break;
+        }
     }
 
     return implode(',', $aValores);

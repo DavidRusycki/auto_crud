@@ -126,9 +126,10 @@ function montaLinhas($aRegistros) {
  * @param Array $aLinha - Array da linha.
  */
 function trataLinha($sColuna, $xValor, $aLinha) {
+    $xChave = getFirst(getColunasChave());
     switch ($sColuna) {
         case 'acoes':
-            echo "<td><a href=\"?rotina=".getNomeRotina()."&codigo={$aLinha[implode('',getColunasChave())]}&acao=".ACAO_ALTERAR."\" class=\"btn btn-primary\">Alterar</a> <a href=\"?rotina=".getNomeRotina()."&codigo={$aLinha[implode('',getColunasChave())]}&acao=".ACAO_DELETAR."\" class=\"btn btn-danger\">Deletar</a></td>";
+            echo "<td><a href=\"?rotina=".getNomeRotina()."&{$xChave}={$aLinha[$xChave]}&acao=".ACAO_ALTERAR."\" class=\"btn btn-primary\">Alterar</a> <a href=\"?rotina=".getNomeRotina()."&{$xChave}={$aLinha[$xChave]}&acao=".ACAO_DELETAR."\" class=\"btn btn-danger\">Deletar</a></td>";
             break;
 
         default:
@@ -137,3 +138,11 @@ function trataLinha($sColuna, $xValor, $aLinha) {
     }
 }
 
+/**
+ * Retorna o primeiro do array.
+ */
+function getFirst($aArray) {
+    foreach($aArray as $x) {
+        return $x;
+    }
+}
