@@ -126,3 +126,25 @@ function getSqlLinhaFromRotinaChave($sChave, $xValor) {
     $sTable = 'tb'.$_GET[ROTINA];
     return "select * from {$sTable} where {$sChave} = {$xValor} limit 1";
 }
+
+/**
+ * Valida se a rotina está nas rotinas do sistema.
+ * @param String $sRotina
+ */
+function validaRotinaFromString($sRotina) {
+    $aRotinas = [];
+    $aRetorno = execute(getSqlValidaRotina());
+    foreach($aRetorno as $aLinha) {
+        foreach($aLinha as $sNome) {
+            $aRotinas[] = $sNome;
+        }
+    }
+    return in_array($sRotina, $aRotinas);
+}
+
+/**
+ * Retorna as rotinas do sistema.
+ */
+function getSqlValidaRotina() {
+    return 'select nome from tbrotina';
+} 

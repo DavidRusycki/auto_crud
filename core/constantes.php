@@ -29,7 +29,7 @@ const ACAO = 'acao';
 const ROTINA = 'rotina';
 const QUANTIDADE_PAGINA = 9;
 const PAGINA = 'pagina';
-
+const RECADO = 'recado';
 
 //Banco de dados;
 const BD_NAME = 'dinamic';

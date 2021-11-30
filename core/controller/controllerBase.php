@@ -5,8 +5,9 @@ require_once('./core/includer.php');
  * Inicia o processamento das requisições.
  */
 function init() {
-    iniciaSecao();
     includeConstantes();
+    exibeRecadoOnConsole();
+    iniciaSecao();
     if (validaUsuarioLogado()) {
         validaParametros();
     }
@@ -43,7 +44,8 @@ function validaUsuarioLogado() {
 function validaParametros() {
     salvaPagina();
     trataAcao();
-    
+    validaRotina();
+
     if (isset($_POST) && !empty($_POST) && count($_POST) && isset($_GET) && !empty($_GET) && count($_GET) && isset($_GET[ACAO]) && isset($_GET[ROTINA])) {
         validaPost();
     }
@@ -245,4 +247,25 @@ function salvaPagina() {
     if (isset($_GET[PAGINA])) {
         $_SESSION[PAGINA] = $_GET[PAGINA];
     }
+}
+
+
+/**
+ * Valida se a rotina está nas rotinas do sistema.
+ */
+function validaRotina() {
+    if (isset($_GET[ROTINA])) {
+        includeControllerBd();
+        if (!validaRotinaFromString($_GET[ROTINA])) {
+            $_SESSION[RECADO] = '<scritp>console.log("verificar se a rotina existe.")</scritp>';
+            redirectHome();
+        };
+    }
+}
+
+/**
+ * Exibe recados no console do navegador.
+ */
+function exibeRecadoOnConsole() {
+    echo $_SESSION[RECADO];
 }
