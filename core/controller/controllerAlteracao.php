@@ -128,6 +128,6 @@ function getChave() {
 /**
  * Retorna o valor da chave.
  */
-function getValorChave() {
+function getValorChave():int {
     return $_GET[getChave()];
 }

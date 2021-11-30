@@ -146,3 +146,17 @@ function getFirst($aArray) {
         return $x;
     }
 }
+
+/**
+ * Monta os links das páginas
+ */
+function montaPaginas() {
+    $iAcao = ACAO_CONSULTAR;
+    $iQuantidade = getFirstFromArray(getFirstFromArray(execute(getSqlQuantidadeRegistros())));
+    if (is_int($iQuantidade)) {
+        for ($i=1; $i <= ($iQuantidade/QUANTIDADE_PAGINA)+1; $i++) { 
+            echo "<a href=\"?rotina={$_GET[ROTINA]}&acao={$iAcao}&pagina={$i}\">".$i."</a>";
+            echo '-';
+        }
+    }
+}

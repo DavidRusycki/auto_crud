@@ -27,6 +27,9 @@ const USUARIO = 'usuario';
 const LOGADO = 'logued';
 const ACAO = 'acao';
 const ROTINA = 'rotina';
+const QUANTIDADE_PAGINA = 9;
+const PAGINA = 'pagina';
+
 
 //Banco de dados;
 const BD_NAME = 'dinamic';
@@ -41,3 +44,4 @@ const NUMERICO = 'numerico';
 const TEXT = 'text';
 const DECIMAL = 'decimal';
 const DATE = 'date';
+

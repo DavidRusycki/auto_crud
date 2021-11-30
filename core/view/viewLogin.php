@@ -70,6 +70,10 @@ body {
   border-top-right-radius: 0;
 }
 
+.float {
+  position: relative;
+}
+
     </style>
 
     
@@ -79,6 +83,8 @@ body {
   <body class="text-center">
     
 <main class="form-signin">
+
+  <?php exibeErro() ?>
 
   <form action="?acao=<?= ACAO_LOGIN ?>" method="POST">
     <h1 class="h3 mb-3 fw-normal">Login</h1>
@@ -97,8 +103,6 @@ body {
   </form>
 
 </main>
-
-
     
   </body>
 </html>

@@ -23,3 +23,15 @@ create table tbpessoa (
 alter table tbpessoa add constraint pk_tbpessoa primary key (codigo);
 
 insert into tbpessoa (nome, idade) values ('David', 19);
+
+
+
+create table login (
+	codigo integer not null,
+	usuario varchar(100) not null,
+	senha varchar(500) not null
+);
+
+insert into login values (5, 'David', md5('pastel'))
+
+select 1 as resposta from login where usuario = 'David' and senha = md5('pastel')

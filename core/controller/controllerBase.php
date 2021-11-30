@@ -11,8 +11,8 @@ function init() {
         validaParametros();
     }
     else {
-        validaLogin();
         includeControllerLogin();
+        validaLogin();
         montaLogin();
     }
 }
@@ -30,7 +30,6 @@ function iniciaSecao() {
  * Valida se o usuário está logado.
  */
 function validaUsuarioLogado() {
-    return true;
     $bRetorno = false;
     if (isset($_SESSION) && isset($_SESSION[USUARIO]) && $_SESSION[USUARIO] && $_SESSION[LOGADO]) {
         $bRetorno = true;
@@ -42,6 +41,7 @@ function validaUsuarioLogado() {
  * Valida os parametros passados para definir o destino da requisição.
  */
 function validaParametros() {
+    salvaPagina();
     trataAcao();
     
     if (isset($_POST) && !empty($_POST) && count($_POST) && isset($_GET) && !empty($_GET) && count($_GET) && isset($_GET[ACAO]) && isset($_GET[ROTINA])) {
@@ -67,6 +67,7 @@ function trataAcao() {
     }
     else {
         $_GET[ACAO] = ACAO_CONSULTAR;
+        $_GET[PAGINA] = $_SESSION[PAGINA];
     }
 }
 
@@ -81,10 +82,7 @@ function validaPost() {
         case ACAO_ALTERAR:
             iniciaAlteracao();
             break;
-        case ACAO_LOGIN:
-            validaLogin();
-            break;
-                
+   
         default:
             die();
             break;
@@ -198,8 +196,11 @@ function montaAlteracao() {
  * Inicia o processamento de validação de login no sistema.
  */
 function validaLogin() {
-
-    
+    if (isset($_POST) && !empty($_POST) && count($_POST) && isset($_GET) && !empty($_GET) && count($_GET) && isset($_GET[ACAO])) {
+        if ($_GET[ACAO] == ACAO_LOGIN && $_POST['senha'] && $_POST['usuario']) {
+            login($_POST['usuario'], $_POST['senha']);
+        }
+    }
 
 }
 
@@ -209,6 +210,7 @@ function validaLogin() {
 function logout() {
     unset($_SESSION[USUARIO]);
     $_SESSION[LOGADO] = false;
+    redirectHome();
 }
 
 /**
@@ -233,5 +235,14 @@ function redirectForRotina() {
 function getFirstFromArray($a) {
     foreach($a as $x) {
         return $x;
+    }
+}
+
+/**
+ * Salva a página atual do usuário.
+ */
+function salvaPagina() {
+    if (isset($_GET[PAGINA])) {
+        $_SESSION[PAGINA] = $_GET[PAGINA];
     }
 }

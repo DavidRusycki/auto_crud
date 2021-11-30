@@ -26,6 +26,26 @@ function execute($sSql) {
 }
 
 /**
+ * Executa o sql passado e retorna o fetch do PDO.
+ * @param String $sSql
+ * @return Mixed - Resultado do SQL
+ */
+function executeSql($sSql) {
+    try {
+        $oPrepare = getConection()->prepare($sSql);
+        $oPrepare->execute();
+        $aRes = $oPrepare->fetchAll(PDO::FETCH_ASSOC);
+        return $aRes;
+    } catch (\Throwable $e) {
+        echo '<pre>';
+        echo $e;
+        echo '</pre>';
+        die();
+    }
+}
+
+
+/**
  * Trata o retorno;
  * @param Array $aRes
  * @return Mixed
@@ -78,7 +98,18 @@ function getSqlGetRotinas() {
  * Retorna o sql de consulta para a rotina.
  */
 function getSqlConsultaRotina() {
-    return "select * from tb{$_GET[ROTINA]}";
+    includeControllerAlteracao();
+    $sChave = getChave();
+    $sQuantidadeLimite = QUANTIDADE_PAGINA;
+    $xOffset = $_GET[PAGINA] * QUANTIDADE_PAGINA - QUANTIDADE_PAGINA;
+    return "select * from tb{$_GET[ROTINA]} order by {$sChave} limit {$sQuantidadeLimite} offset {$xOffset}";
+}
+
+/**
+ * Retorna o sql de consulta para a rotina.
+ */
+function getSqlQuantidadeRegistros() {
+    return "select count(*) from tb{$_GET[ROTINA]} ";
 }
 
 /**
