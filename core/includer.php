@@ -69,6 +69,10 @@ function includeViewAlteracao() {
     require_once('./core/view/viewAlteracao.php');
 }
 
+function includeViewCadastro() {
+    require_once('./core/view/viewCadastro.php');
+}
+
 /**
  * Tenta dar require no arquivo da rotina.
  */

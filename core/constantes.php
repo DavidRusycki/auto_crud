@@ -10,6 +10,7 @@ const ACAO_ALTERAR   = 3;
 const ACAO_DELETAR   = 4;
 const ACAO_LOGIN     = 5;
 const ACAO_LOGOUT    = 6;
+const ACAO_CADASTRAR = 7;
 
 //Ações que o sistema aceita.
 const ACOES = [
@@ -20,6 +21,7 @@ const ACOES = [
     , ACAO_ALTERAR
     , ACAO_INCLUIR
     , ACAO_CONSULTAR
+    , ACAO_CADASTRAR
 ];
 
 //Random

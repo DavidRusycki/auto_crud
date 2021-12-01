@@ -84,22 +84,25 @@ body {
     
 <main class="form-signin">
 
-  <?php exibeErro() ?>
+  <?php senhasErradas() ?>
 
-  <form action="?acao=<?= ACAO_LOGIN ?>" method="POST">
-    <h1 class="h3 mb-3 fw-normal">Login</h1>
+  <form action="?acao=<?= ACAO_CADASTRAR ?>" method="POST">
+    <h1 class="h3 mb-3 fw-normal">Cadastro de Usuário</h1>
 
     <div class="form-floating">
       <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="usuario">
       <label for="floatingInput">Usuário</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="senha">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="senha1">
       <label for="floatingPassword">Senha</label>
     </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="senha2">
+      <label for="floatingPassword">Confirme a Senha</label>
+    </div>
 
-    <button class="w-100 btn btn-lg btn-success" type="submit">Entrar</button>
-    <a class="nav-link px-2 text-muted" href="index.php?&acao=<?= ACAO_LOGIN ?>">Cadastrar</a>
+    <button class="w-100 btn btn-lg btn-success" type="submit">Realizar cadastro</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
   </form>
 

@@ -24,6 +24,7 @@ function init() {
 function iniciaSecao() {
     if (!isset($_SESSION)) {
         session_start();
+        $_SESSION[PAGINA] = 1;
     }
 }
 
@@ -202,8 +203,21 @@ function validaLogin() {
         if ($_GET[ACAO] == ACAO_LOGIN && $_POST['senha'] && $_POST['usuario']) {
             login($_POST['usuario'], $_POST['senha']);
         }
+        else if ($_GET[ACAO] == ACAO_CADASTRAR  && $_POST['senha1'] && $_POST['senha2'] && $_POST['usuario']) {
+            if ($_POST['senha1'] == $_POST['senha2']) {
+                executaCadastro($_POST['usuario'], $_POST['senha1']);
+            }
+            else {
+                $_SESSION['senhasErradas'] = true;
+                montaTelaCadastro();
+                die();
+            }
+        }
     }
-
+    else if (isset($_GET) && !empty($_GET) && count($_GET) && isset($_GET[ACAO]) && $_GET[ACAO] == ACAO_LOGIN && !count($_POST)) {
+        montaTelaCadastro();
+        die();
+    }
 }
 
 /**
@@ -267,5 +281,7 @@ function validaRotina() {
  * Exibe recados no console do navegador.
  */
 function exibeRecadoOnConsole() {
-    echo $_SESSION[RECADO];
+    if (isset($_SESSION[RECADO])) {
+        echo $_SESSION[RECADO];
+    }
 }
